@@ -1,14 +1,13 @@
-# Theft-detection-security-
-
 # CCTV Weapon or Thief Detection
 
 ## Overview
 
-This project focuses on developing an AI-based system for detecting weapons or potential thieves through CCTV footage. The system uses computer vision and machine learning algorithms to identify suspicious activity in real-time and trigger alerts. The aim is to enhance security measures in public and private spaces by providing early warning signals of potential threats.
+This project focuses on developing an AI-based system for detecting weapons or potential thieves through CCTV footage. The system uses computer vision, machine learning algorithms, and Intel's oneAPI to accelerate detection and improve performance. The goal is to enhance security measures in public and private spaces by providing early warning signals of potential threats.
 
 ## Features
 
 - **Real-time detection:** Continuously monitors CCTV footage to detect the presence of weapons or suspicious behavior.
+- **High-performance computing:** Utilizes Intel's oneAPI to optimize performance across heterogeneous hardware, including CPUs and GPUs.
 - **Alert system:** Sends notifications when a weapon or suspicious activity is detected.
 - **Customizable detection models:** Supports training with custom datasets for specific weapon types or thief behavior.
 - **Scalable and adaptable:** Can be deployed on various hardware configurations, from local computers to cloud servers.
@@ -26,6 +25,7 @@ To set up and run the project, ensure you have the following installed:
 - Numpy
 - Scikit-learn
 - Flask (for web deployment)
+- Intel oneAPI Toolkit (for optimized performance)
 - Twilio or any messaging service API for sending alerts
 
 ### Installation
