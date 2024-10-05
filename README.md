@@ -1,4 +1,4 @@
-# AI AI Security and Thief Detection
+# AlertEye AI
 
 This project implements a real-time AI-based security system capable of detecting weapons and masks from a video stream. When a weapon is detected, the system records the video and sends an alert message via Telegram. This project can be utilized for security applications such as surveillance in sensitive areas.
 Features
