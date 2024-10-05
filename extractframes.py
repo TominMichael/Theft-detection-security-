@@ -1,3 +1,8 @@
+
+#for extracting frames from video to make dataset
+
+
+
 import cv2
 import os
 
