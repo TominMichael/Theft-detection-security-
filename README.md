@@ -119,4 +119,4 @@ Acknowledgements
 
 
 
-    ![Image Alt](https://github.com/TominMichael/Theft-detection-security-/blob/addcc71166c18cb4eb5d8662e583a8ffa8bcf58f/Screenshot%20from%202024-10-05%2005-35-07.png).
+    
