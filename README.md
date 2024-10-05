@@ -1,95 +1,118 @@
-#Teft Detection with Intel oneAPI
+Theft Detection with Intel oneAPI
 
-This project implements a real-time AI-based security system capable of detecting weapons and masks from a video stream. When a weapon is detected, the system records the video and sends an alert message via Telegram. This project can be utilized for security applications such as surveillance in sensitive areas.
+This project uses AI and computer vision techniques to detect weapons and masks in real-time video streams for theft prevention. Upon detection, the system sends alerts via Telegram, records the footage, and provides timely responses. The project leverages Intel's oneAPI, TensorFlow, OpenCV, Telegram API, and NumPy for real-time analysis and communication.
 Features
 
-    Real-Time Detection: Detects weapons and masks in live video feeds.
-    Telegram Alerts: Sends real-time alerts to a Telegram chat when a weapon or mask is detected.
-    Video Recording: Automatically starts recording video footage when a weapon is detected.
-    AI Model Integration: Uses a pre-trained TensorFlow model (.h5) for inference.
-    Intel oneAPI: The project leverages Intel's oneAPI for enhanced performance and optimized inference across Intel hardware platforms.
-
-Technologies Used
-
-    Intel oneAPI: For optimized AI performance and inference acceleration on Intel-based platforms.
-    TensorFlow/Keras: For loading the pre-trained AI model and running inference.
-    OpenCV: For handling video capture, preprocessing, and displaying results.
-    NumPy: For data manipulation and preparation.
-    Telegram API: To send real-time alerts when specific objects (weapons or masks) are detected.
-    Asyncio: To ensure non-blocking execution of Telegram alerts during live video processing.
-
-Project Structure
-
-    main.py: The primary script that handles real-time video processing, inference, and Telegram alerts.
-    newnew.h5: The pre-trained TensorFlow/Keras model used for object detection.
-    README.md: Documentation for the project.
+    Real-time video stream analysis: Detects weapons and masks in live video streams using TensorFlow and OpenCV.
+    AI-Powered Detection: Uses TensorFlow for accurate model predictions.
+    Alert System: Sends instant alerts via Telegram API when a threat is detected.
+    Footage Recording: Captures and stores video evidence upon detection.
+    Optimized with Intel oneAPI: Enhanced performance leveraging Intel's oneAPI.
 
 Prerequisites
 
-To run this project, ensure you have the following installed:
+To run this project, you will need:
+
+    Intel oneAPI: For optimized AI inference and performance enhancements.
+    Python 3.x
+    TensorFlow
+    OpenCV
+    NumPy
+    Telegram Bot API
+
+You can install the necessary libraries by running:
 
 bash
 
-pip install tensorflow opencv-python numpy python-telegram-bot intel-openvino
+pip install tensorflow opencv-python-headless numpy python-telegram-bot
 
-Intel oneAPI Setup
+Setup
+Step 1: Intel oneAPI Installation
 
-Ensure that you have Intel's oneAPI toolkit installed, which includes support for AI inference acceleration. You can download the toolkit from Intel's oneAPI website.
-Telegram Setup
+To take advantage of Intel oneAPI, follow the installation steps from the official Intel documentation: Intel oneAPI Installation Guide.
+Step 2: Setting up the Telegram Bot
 
-    Create a bot using BotFather on Telegram and obtain the bot token.
-    Send a message to your bot to initiate communication.
-    Retrieve your chat_id from Telegram (you can use the getUpdates API to do this).
+    Create a new bot on Telegram by messaging BotFather.
+    Copy the bot token provided by BotFather.
+    Replace the TOKEN in the code with your bot token.
 
-Usage
+Step 3: Clone the Repository
 
-    Clone the repository:
+bash
 
-h
+git clone https://github.com/yourusername/theft-detection-oneapi.git
+cd theft-detection-oneapi
 
-git clone <repository-url>
-cd <repository-directory>
+Step 4: Model Training (Optional)
 
-    Replace the placeholders:
-        Replace "YOUR_TELEGRAM_BOT_TOKEN" with your Telegram bot token.
-        Replace "YOUR_CHAT_ID" with the chat ID of your Telegram account.
+If you want to train your model:
 
-    Run the script:
+    Capture and label your dataset with frames of "weapons" and "no weapons."
+    Use TensorFlow to train the detection model.
+
+For model training, the repository includes a script train.py. Run the script to train the model.
+
+bash
+
+python train.py
+
+Step 5: Running the Project
+
+Make sure your webcam is connected or your video stream is set up, and execute:
 
 bash
 
 python main.py
 
-How It Works
+This will start the real-time detection process.
+Configuration
 
-    The system captures video frames from your camera.
-    Each frame is processed and passed through the pre-trained TensorFlow model for inference.
-    Intel oneAPI enhances the inference process, optimizing it for Intel hardware to accelerate detection and reduce latency.
-    Based on the prediction, if a weapon is detected:
-        A Telegram alert is sent to notify about the detection.
-        Video recording starts automatically.
-    If a mask is detected, a separate Telegram alert is sent.
-    The detection labels ("Weapon Detected", "Mask Detected", "None") are displayed in real-time on the video.
+In the config.py file, you can configure:
 
-Customization
+    Telegram Bot Token: Replace TOKEN with your bot's API key.
+    Recording Settings: Specify the directory where footage will be stored upon threat detection.
+    Thresholds: Adjust sensitivity for mask and weapon detection.
 
-    Model: You can swap the newnew.h5 file with any other pre-trained model that suits your detection needs. Ensure that the input shape and preprocessing steps match the new model.
-    Intel oneAPI: Leverage Intel's oneAPI for further optimization by fine-tuning the inference process to utilize Intel's hardware acceleration for deep learning workloads.
-    Alert Messages: You can customize the alert messages in the script by changing the text in the bot.send_message() calls.
+Project Structure
 
-Troubleshooting
+bash
 
-    No Telegram Messages: Ensure that the bot token and chat ID are correct. You may also need to interact with the bot by sending it a message before it can send you alerts.
-    Model Accuracy: If the model's predictions are inaccurate, ensure that the input size, preprocessing, and normalization steps are aligned with how the model was trained.
-    Performance Issues: Make sure you have Intel's oneAPI toolkit installed and configured properly to take advantage of AI acceleration. Refer to Intel's documentation if necessary.
+theft-detection-oneapi/
+├── models/             # Trained models
+├── data/               # Training datasets
+├── src/
+│   ├── main.py         # Main application code
+│   ├── train.py        # Model training script
+│   ├── detection.py    # Weapon and mask detection logic
+│   ├── telegram_alert.py  # Telegram bot integration
+├── config.py           # Configuration file for bot and thresholds
+├── README.md           # Project documentation
 
-Future Enhancements
+Code Explanation
 
-    Add support for detecting additional objects beyond weapons and masks.
-    Implement cloud storage integration for saving recorded videos.
-    Enhance accuracy by fine-tuning the model on specific datasets for security-related use cases.
-    Further optimize the system with Intel oneAPI for enhanced performance on Intel hardware platforms.
+    main.py: Runs the real-time video analysis using OpenCV. Frames are passed through the TensorFlow model, and detections are analyzed. If a threat is detected, a message is sent to Telegram, and the footage is recorded.
+    detection.py: Contains the logic for weapon and mask detection using the trained TensorFlow model.
+    telegram_alert.py: Handles sending notifications to Telegram using the Telegram API.
+    train.py: Trains the TensorFlow model with weapon and mask datasets.
+    config.py: Configuration settings for Telegram bot tokens, recording, and detection thresholds.
 
+Usage
+
+    Real-time monitoring: Once started, the system will monitor live video streams and automatically send alerts if a potential threat is detected.
+    The Telegram bot will provide notifications with details of the detection and the footage will be stored for further review.
+
+Performance Optimization with Intel oneAPI
+
+This project leverages Intel oneAPI to enhance AI inference performance, making the theft detection faster and more efficient, especially on Intel hardware. Intel's AI Kit provides better utilization of CPU and GPU resources, offering accelerated performance for TensorFlow models.
+Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+Acknowledgements
+
+    Intel oneAPI: For providing powerful AI optimization tools.
+    TensorFlow: For AI-based model training and predictions.
+    OpenCV: For image processing and real-time video analysis.
+    Telegram API: For sending instant alerts during theft detection.
