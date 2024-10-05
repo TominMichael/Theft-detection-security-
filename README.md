@@ -1,4 +1,4 @@
-# AlertEye AI
+#Teft Detection with Intel oneAPI
 
 This project implements a real-time AI-based security system capable of detecting weapons and masks from a video stream. When a weapon is detected, the system records the video and sends an alert message via Telegram. This project can be utilized for security applications such as surveillance in sensitive areas.
 Features
@@ -45,7 +45,7 @@ Usage
 
     Clone the repository:
 
-bash
+h
 
 git clone <repository-url>
 cd <repository-directory>
