@@ -24,10 +24,8 @@ To set up and run the project, ensure you have the following installed:
 - TensorFlow or PyTorch (Choose based on the model you're using)
 - Numpy
 - Scikit-learn
-- Flask (for web deployment)
 - Intel oneAPI Toolkit (for optimized performance)
-- Twilio or any messaging service API for sending alerts
-
+- Telegram API
 ### Installation
 
 1. **Clone the repository:**
